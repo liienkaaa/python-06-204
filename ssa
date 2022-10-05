@@ -1,3 +1,4 @@
+
 import pygame
 from pygame.draw import *
 
@@ -6,48 +7,67 @@ pygame.init()
 FPS = 30
 screen = pygame.display.set_mode((800, 600))
 
-rect(screen, (0,180,255),(0,0,800,300))
-rect(screen, (0,150,10) , (0,300,800,300))
-rect(screen, (100,100,110) , (100,250,200,150))
-rect(screen, (0,0,0) , (100,250,200,150),2)
-rect(screen, (0,130,255) , (166,296,70,60))
-rect(screen, (255,120,0) , (166,296,70,60),2)
-polygon(screen, (255,0,0), [(100,250),(200,150),(300,250),(100,250)])
-polygon(screen, (0,0,0), [(100,250),(200,150),(300,250),(100,250)],2)
-circle(screen,(0,255,0),(600,160),20)
-circle(screen,(0,0,0),(600,160),20,2)
-circle(screen,(0,255,0),(580,180),20)
-circle(screen,(0,0,0),(580,180),20,2)
-circle(screen,(0,255,0),(620,180),20)
-circle(screen,(0,0,0),(620,180),20,2)
-circle(screen,(0,255,0),(600,200),20)
-circle(screen,(0,0,0),(600,200),20,2)
 
-circle(screen,(0,255,0),(580,210),20)
-circle(screen,(0,0,0),(580,210),20,2)
-circle(screen,(0,255,0),(617,210),20)
-circle(screen,(0,0,0),(617,210),20,2)
+def draw_sky(screen, color, x,y, width, height): 
+    rect(screen, (color),(x,y, width, height))
 
-rect(screen,(100,0,0),(591,227,16,73))
-polygon(screen, (100,0,0), [(591,227),(598.5 , 221),(606,227),(591,227)])
+def draw_grass(screen, color, x,y, width, height): 
+    rect(screen, (color), (x,y, width, height))
+    
+def draw_house_wall(screen, color, x,y,width, height):   
+    rect(screen, (color), (x,y,width, height))
 
+def draw_house_wall_border(screen, color, x,y,width, height, tolshina): 
+    rect(screen, (color), (x,y,width, height), tolshina)
 
+def draw_house_window(screen, color, x,y,width, height): 
+    rect(screen, (color), (x,y,width, height))
 
-circle(screen,(255,255,255),(350,100),20)
-circle(screen,(0,0,0),(350,100),20,1)
-circle(screen,(255,255,255),(370,100),20)
-circle(screen,(0,0,0),(370,100),20,1)
-circle(screen,(255,255,255),(390,100),20)
-circle(screen,(0,0,0),(390,100),20,1)
-circle(screen,(255,255,255),(410,100),20)
-circle(screen,(0,0,0),(410,100),20,1)
+def draw_house_window_border(screen, color, x,y,width, height, tolshina): 
+    rect(screen, (color), (x,y,width, height), tolshina)
 
-circle(screen,(255,255,255),(370,80),20)
-circle(screen,(0,0,0),(370,80),20,1)
-circle(screen,(255,255,255),(390,80),20)
-circle(screen,(0,0,0),(390,80),20,1)
+def draw_house_roof(screen, color, x1,y1, x2,y2, x3,y3, x4,y4): 
+    polygon(screen, (color), [(x1,y1), (x2,y2), (x3,y3), (x4,y4)])
 
+def draw_house_roof_border(screen, color, x1,y1, x2,y2, x3,y3, x4,y4, tolshina): 
+    polygon(screen, (color), [(x1,y1), (x2,y2), (x3,y3), (x4,y4)], tolshina)
 
+def draw_tree_leaves(screen, color, x,y,radius):
+    circle(screen,(color),(x-20,y+20),radius)
+    circle(screen,(color),(x+20,y+20),radius)
+    circle(screen,(color),(x,y+40),radius)
+    circle(screen,(color),(x,y),radius)
+    circle(screen,(color),(x-20,y+50),radius)
+    circle(screen,(color),(x+17,y+50),radius)
+
+def draw_tree_leaves_border(screen,color,x,y,radius, tolshina):
+    circle(screen,(color),(x-20,y+20), radius, tolshina)
+    circle(screen,(color),(x+20,y+20),radius, tolshina)
+    circle(screen,(color),(x,y+40),radius, tolshina)
+    circle(screen,(color),(x,y),radius, tolshina)
+    circle(screen,(color),(x-20,y+50),radius, tolshina)
+    circle(screen,(color),(x+17,y+50),radius, tolshina)
+
+def draw_tree_basis(screen, color, x,y,width,height):
+    rect(screen,(color), (x,y,width,height))
+    polygon(screen, (color), [(x,y),(x+7.5 , y),(x+15,y+6),(x,y)])
+
+def draw_cloud(screen,color,x,y,radius):
+    circle(screen,(color),(x,y),radius)
+    circle(screen,(color),(x+20,y),radius)
+    circle(screen,(color),(x+40,y),radius)
+    circle(screen,(color),(x+60,y),radius)
+    circle(screen,(color),(x+20,y-20),radius)
+    circle(screen,(color),(x+40,y-20),radius)
+
+def draw_cloud_border(screen,color,x,y,radius, tolshina):
+    circle(screen,(color),(x,y),radius, tolshina)
+    circle(screen,(color),(x+20,y),radius, tolshina)
+    circle(screen,(color),(x+40,y),radius, tolshina)
+    circle(screen,(color),(x+60,y),radius, tolshina)
+    circle(screen,(color),(x+20,y-20),radius, tolshina)
+    circle(screen,(color),(x+40,y-20),radius, tolshina)
+    
 
 
 
